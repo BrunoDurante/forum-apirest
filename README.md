@@ -27,3 +27,18 @@ São contratos dos endpoints mas não necessariamente iguais aos DTOs.
 As classes contidas em model são responsáveis por manter um contrato dos recursos a serem trabalhados
 no projeto de uma maneira mais detalhada e completa. Normalmente abrangem todas as informações necessárias
 para que a aplicação funcione com sucesso, sejam elas capturadas do frontend, base de dados, outras APIs, etc.
+
+----------------------
+### Autor
+
+<img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/37076921?v=4" width="100px;" alt=""/>
+
+<sub><b>Bruno Durante</b></sub> 💻
+
+Desenvolvido por Bruno Durante.
+Tem algum feedback? Quer trocar uma ideia sobre o projeto?
+👋🏽 Entre em contato!
+
+[![Linkedin Badge](https://img.shields.io/badge/-Bruno-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/brunodurante/)](https://www.linkedin.com/in/brunodurante/)
+[![Gmail Badge](https://img.shields.io/badge/-brunodurantec@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:brunodurantec@gmail.com)](mailto:brunodurantec@gmail.com)
+
