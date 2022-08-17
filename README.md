@@ -28,6 +28,9 @@ As classes contidas em model são responsáveis por manter um contrato dos recur
 no projeto de uma maneira mais detalhada e completa. Normalmente abrangem todas as informações necessárias
 para que a aplicação funcione com sucesso, sejam elas capturadas do frontend, base de dados, outras APIs, etc.
 
+#### bean validation
+Insere regras para o preenchimento dos campos. Exemplo: tamanho, se pode vir nulo ou vazio, etc.
+
 ----------------------
 ### Autor
 
