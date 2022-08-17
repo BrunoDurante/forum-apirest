@@ -17,8 +17,8 @@ class TopicoService(
 ) {
 
     fun listar(): List<TopicoView> {
-        return topicos.stream().map {
-                t -> topicoViewMapper.map(t)
+        return topicos.stream().map { t ->
+            topicoViewMapper.map(t)
         }.collect(Collectors.toList())
     }
 
@@ -30,7 +30,7 @@ class TopicoService(
         return topicoViewMapper.map(topico)
     }
 
-    fun cadastrar(form: NovoTopicoForm){
+    fun cadastrar(form: NovoTopicoForm) {
         val topico = topicoFormMapper.map(form)
         topico.id = topicos.size.toLong() + 1
         topicos = topicos.plus(topico)

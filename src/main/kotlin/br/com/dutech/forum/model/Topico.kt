@@ -2,7 +2,7 @@ package br.com.dutech.forum.model
 
 import java.time.LocalDateTime
 
-data class Topico (
+data class Topico(
     var id: Long? = null,
     val titulo: String,
     val mensagem: String,
@@ -11,4 +11,4 @@ data class Topico (
     val autor: Usuario,
     val status: StatusTopico = StatusTopico.NAO_RESPONDIDO,
     val respostas: List<Resposta> = ArrayList()
-        )
+)
