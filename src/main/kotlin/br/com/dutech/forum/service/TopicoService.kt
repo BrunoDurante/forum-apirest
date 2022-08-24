@@ -42,7 +42,8 @@ class TopicoService(
             t.id == dto.id
         }.findFirst().get()
 
-        topicos = topicos.minus(topico).plus(Topico(
+        topicos = topicos.minus(topico).plus(
+            Topico(
             id = topico.id,
             titulo = dto.titulo,
             mensagem = dto.mensagem,
@@ -51,6 +52,15 @@ class TopicoService(
             autor = topico.autor,
             status = topico.status,
             respostas = topico.respostas
-        ))
+        )
+        )
+    }
+
+    fun deletar(id: Long) {
+        val topico = topicos.stream().filter{
+            t -> t.id == id
+        }.findFirst().get()
+
+        topicos = topicos.minus(topico)
     }
 }
