@@ -31,10 +31,11 @@ class TopicoService(
         return topicoViewMapper.map(topico)
     }
 
-    fun cadastrar(form: NovoTopicoForm) {
+    fun cadastrar(form: NovoTopicoForm): TopicoView {
         val topico = topicoFormMapper.map(form)
         topico.id = topicos.size.toLong() + 1
         topicos = topicos.plus(topico)
+        return topicoViewMapper.map(topico)
     }
 
     fun atualizar(dto: AtualizaTopicoDTO) {
