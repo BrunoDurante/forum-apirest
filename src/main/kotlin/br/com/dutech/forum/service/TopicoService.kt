@@ -38,13 +38,12 @@ class TopicoService(
         return topicoViewMapper.map(topico)
     }
 
-    fun atualizar(dto: AtualizaTopicoDTO) {
+    fun atualizar(dto: AtualizaTopicoDTO): TopicoView {
         val topico = topicos.stream().filter { t ->
             t.id == dto.id
         }.findFirst().get()
 
-        topicos = topicos.minus(topico).plus(
-            Topico(
+        val novoTopico = Topico(
             id = topico.id,
             titulo = dto.titulo,
             mensagem = dto.mensagem,
@@ -54,7 +53,9 @@ class TopicoService(
             status = topico.status,
             respostas = topico.respostas
         )
-        )
+
+        topicos = topicos.minus(topico).plus(novoTopico)
+        return topicoViewMapper.map(novoTopico)
     }
 
     fun deletar(id: Long) {

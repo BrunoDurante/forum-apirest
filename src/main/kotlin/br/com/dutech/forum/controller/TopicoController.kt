@@ -38,8 +38,9 @@ class TopicoController(private val service: TopicoService) {
     }
 
     @PutMapping
-    fun atualizar(@RequestBody @Valid dto: AtualizaTopicoDTO) {
-        service.atualizar(dto)
+    fun atualizar(@RequestBody @Valid dto: AtualizaTopicoDTO): ResponseEntity<TopicoView> {
+        val topicoView = service.atualizar(dto)
+        return ResponseEntity.ok(topicoView)
     }
 
     @DeleteMapping("/{id}")
