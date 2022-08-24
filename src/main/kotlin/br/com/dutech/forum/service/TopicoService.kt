@@ -1,5 +1,6 @@
 package br.com.dutech.forum.service
 
+import br.com.dutech.forum.dto.AtualizaTopicoDTO
 import br.com.dutech.forum.dto.NovoTopicoForm
 import br.com.dutech.forum.dto.TopicoView
 import br.com.dutech.forum.mapper.TopicoFormMapper
@@ -34,5 +35,22 @@ class TopicoService(
         val topico = topicoFormMapper.map(form)
         topico.id = topicos.size.toLong() + 1
         topicos = topicos.plus(topico)
+    }
+
+    fun atualizar(dto: AtualizaTopicoDTO) {
+        val topico = topicos.stream().filter { t ->
+            t.id == dto.id
+        }.findFirst().get()
+
+        topicos = topicos.minus(topico).plus(Topico(
+            id = topico.id,
+            titulo = dto.titulo,
+            mensagem = dto.mensagem,
+            dataCriacao = topico.dataCriacao,
+            curso = topico.curso,
+            autor = topico.autor,
+            status = topico.status,
+            respostas = topico.respostas
+        ))
     }
 }
