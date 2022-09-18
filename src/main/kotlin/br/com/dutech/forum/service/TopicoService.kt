@@ -3,6 +3,7 @@ package br.com.dutech.forum.service
 import br.com.dutech.forum.dto.AtualizaTopicoDTO
 import br.com.dutech.forum.dto.NovoTopicoForm
 import br.com.dutech.forum.dto.TopicoView
+import br.com.dutech.forum.exception.NotFoundException
 import br.com.dutech.forum.mapper.TopicoFormMapper
 import br.com.dutech.forum.mapper.TopicoViewMapper
 import br.com.dutech.forum.model.Topico
@@ -14,7 +15,8 @@ import kotlin.collections.ArrayList
 class TopicoService(
     private var topicos: List<Topico> = ArrayList(),
     private var topicoViewMapper: TopicoViewMapper,
-    private var topicoFormMapper: TopicoFormMapper
+    private var topicoFormMapper: TopicoFormMapper,
+    private var notFoundMessage: String = "Topico nao encontrado!"
 ) {
 
     fun listar(): List<TopicoView> {
@@ -26,7 +28,7 @@ class TopicoService(
     fun buscarPorId(id: Long): TopicoView {
         val topico = topicos.stream().filter { t ->
             t.id == id
-        }.findFirst().get()
+        }.findFirst().orElseThrow{ NotFoundException(notFoundMessage) }
 
         return topicoViewMapper.map(topico)
     }
@@ -41,7 +43,7 @@ class TopicoService(
     fun atualizar(dto: AtualizaTopicoDTO): TopicoView {
         val topico = topicos.stream().filter { t ->
             t.id == dto.id
-        }.findFirst().get()
+        }.findFirst().orElseThrow{ NotFoundException(notFoundMessage) }
 
         val novoTopico = Topico(
             id = topico.id,
@@ -61,7 +63,7 @@ class TopicoService(
     fun deletar(id: Long) {
         val topico = topicos.stream().filter{
             t -> t.id == id
-        }.findFirst().get()
+        }.findFirst().orElseThrow{ NotFoundException(notFoundMessage) }
 
         topicos = topicos.minus(topico)
     }
