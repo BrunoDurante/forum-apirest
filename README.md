@@ -16,10 +16,10 @@ Contrato (simplificado ou não) dos endpoints.
 Nessas classes que definimos os campos de request e response para os endpoints.
 
 #### forum.mapper
-Fazer a transformação dos objetos DTO em models e vice versa.
+Fazer a transformação dos DTOs em objetos internos para serem trabalhados no serviço e vice versa.
 Nem sempre um DTO será igual a uma model, em muitos casos o objeto a ser armazenado na aplicação 
 não tem o mesmo corpo de um DTO. Para exemplificar: avalie a classe `TopicoFormMapper.kt` e a Model `Topico.kt`. 
-Ambas são referentes ao mesmo objeto. O DTO possui um corpo mais simplificado pelos campos faltantes serem capturados
+Ambas são referentes ao mesmo contexto. O DTO possui um corpo mais simplificado pelos campos faltantes serem capturados
 em uma possível base de dados, e não de um frontend.
 
 #### forum.model
@@ -30,6 +30,10 @@ para que a aplicação funcione com sucesso, sejam elas capturadas do frontend, 
 
 #### bean validation
 Insere regras para o preenchimento dos campos. Exemplo: tamanho, se pode vir nulo ou vazio, etc.
+
+#### forum.exception
+Tratar erros da aplicação. Sem esse tratamento, o Spring exibe o stacktrace gigantesco e sem tradução. O objetivo é 
+facilitar e padronizar os erros da aplicação, setando mensagens mais claras e Status HTTP correto.
 
 ----------------------
 ### Autor
