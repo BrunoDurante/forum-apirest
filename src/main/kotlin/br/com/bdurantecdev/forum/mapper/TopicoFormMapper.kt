@@ -1,5 +1,6 @@
 package br.com.bdurantecdev.forum.mapper
 
+import br.com.bdurantecdev.forum.dto.NovoTopicoForm
 import br.com.bdurantecdev.forum.model.Topico
 import br.com.bdurantecdev.forum.service.CursoService
 import br.com.bdurantecdev.forum.service.UsuarioService
@@ -9,9 +10,9 @@ import org.springframework.stereotype.Component
 class TopicoFormMapper(
     private var cursoService: CursoService,
     private var usuarioService: UsuarioService
-) : Mapper<br.com.bdurantecdev.forum.dto.NovoTopicoForm, Topico> {
+) : Mapper<NovoTopicoForm, Topico> {
 
-    override fun map(t: br.com.bdurantecdev.forum.dto.NovoTopicoForm): Topico {
+    override fun map(t: NovoTopicoForm): Topico {
         return Topico(
             titulo = t.titulo,
             mensagem = t.mensagem,

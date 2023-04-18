@@ -1,9 +1,12 @@
 package br.com.bdurantecdev.forum.controller
 
+import br.com.bdurantecdev.forum.dto.AtualizaTopicoDTO
+import br.com.bdurantecdev.forum.dto.NovoTopicoForm
 import br.com.bdurantecdev.forum.dto.TopicoView
 import br.com.bdurantecdev.forum.service.TopicoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.util.UriComponentsBuilder
 import javax.validation.Valid
@@ -23,21 +26,27 @@ class TopicoController(private val service: TopicoService) {
     }
 
     @PostMapping
-    fun cadastrar(@RequestBody @Valid form: br.com.bdurantecdev.forum.dto.NovoTopicoForm, uriBuilder: UriComponentsBuilder): ResponseEntity<br.com.bdurantecdev.forum.dto.TopicoView> {
+    @Transactional
+    fun cadastrar(
+        @RequestBody @Valid form: NovoTopicoForm,
+        uriBuilder: UriComponentsBuilder
+    ): ResponseEntity<TopicoView> {
         val topico = service.cadastrar(form)
         val uri = uriBuilder.path("/topicos/${topico.id}").build().toUri()
         return ResponseEntity.created(uri).body(topico)
     }
 
     @PutMapping
-    fun atualizar(@RequestBody @Valid dto: br.com.bdurantecdev.forum.dto.AtualizaTopicoDTO): ResponseEntity<br.com.bdurantecdev.forum.dto.TopicoView> {
+    @Transactional
+    fun atualizar(@RequestBody @Valid dto: AtualizaTopicoDTO): ResponseEntity<TopicoView> {
         val topicoView = service.atualizar(dto)
         return ResponseEntity.ok(topicoView)
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun deletar(@PathVariable id: Long){
+    @Transactional
+    fun deletar(@PathVariable id: Long) {
         service.deletar(id)
     }
 

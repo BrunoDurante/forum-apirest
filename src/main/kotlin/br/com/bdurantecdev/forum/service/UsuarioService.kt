@@ -1,31 +1,15 @@
 package br.com.bdurantecdev.forum.service
 
 import br.com.bdurantecdev.forum.model.Usuario
+import br.com.bdurantecdev.forum.repository.UsuarioRepository
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class UsuarioService(var usuarios: List<Usuario>) {
-
-    init {
-        val usuario1 = Usuario(
-            id = 1,
-            nome = "Bruno",
-            email = "bruno@gmail.com"
-        )
-
-        val usuario2 = Usuario(
-            id = 2,
-            nome = "João",
-            email = "joao@gmail.com"
-        )
-
-        usuarios = Arrays.asList(usuario1, usuario2)
-    }
-
+class UsuarioService(
+    private val usuarioRepository: UsuarioRepository
+) {
     fun buscarPorId(id: Long): Usuario {
-        return usuarios.stream().filter { usuario ->
-            usuario.id == id
-        }.findFirst().get()
+        return usuarioRepository.getReferenceById(id)
     }
 }
