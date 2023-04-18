@@ -1,6 +1,6 @@
 package br.com.bdurantecdev.forum.service
 
-import br.com.dutech.forum.model.Usuario
+import br.com.bdurantecdev.forum.model.Usuario
 import org.springframework.stereotype.Service
 import java.util.*
 

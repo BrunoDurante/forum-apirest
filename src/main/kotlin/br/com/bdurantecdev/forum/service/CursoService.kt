@@ -1,6 +1,6 @@
 package br.com.bdurantecdev.forum.service
 
-import br.com.dutech.forum.model.Curso
+import br.com.bdurantecdev.forum.model.Curso
 import org.springframework.stereotype.Service
 import java.util.*
 

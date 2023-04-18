@@ -1,9 +1,8 @@
 package br.com.bdurantecdev.forum.mapper
 
-import br.com.bdurantecdev.forum.dto.NovoTopicoForm
-import br.com.dutech.forum.model.Topico
-import br.com.dutech.forum.service.CursoService
-import br.com.dutech.forum.service.UsuarioService
+import br.com.bdurantecdev.forum.model.Topico
+import br.com.bdurantecdev.forum.service.CursoService
+import br.com.bdurantecdev.forum.service.UsuarioService
 import org.springframework.stereotype.Component
 
 @Component

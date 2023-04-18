@@ -1,5 +1,6 @@
 package br.com.bdurantecdev.forum.controller
 
+import br.com.bdurantecdev.forum.dto.TopicoView
 import br.com.bdurantecdev.forum.service.TopicoService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -12,12 +13,12 @@ import javax.validation.Valid
 class TopicoController(private val service: TopicoService) {
 
     @GetMapping
-    fun listar(): List<br.com.bdurantecdev.forum.dto.TopicoView> {
+    fun listar(): List<TopicoView> {
         return service.listar()
     }
 
     @GetMapping("/{id}")
-    fun buscarPorId(@PathVariable id: Long): br.com.bdurantecdev.forum.dto.TopicoView {
+    fun buscarPorId(@PathVariable id: Long): TopicoView {
         return service.buscarPorId(id)
     }
 

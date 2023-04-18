@@ -1,8 +1,8 @@
 package br.com.bdurantecdev.forum.mapper
 
 import br.com.bdurantecdev.forum.dto.NovaRespostaForm
-import br.com.dutech.forum.model.Resposta
-import br.com.dutech.forum.service.UsuarioService
+import br.com.bdurantecdev.forum.model.Resposta
+import br.com.bdurantecdev.forum.service.UsuarioService
 import org.springframework.stereotype.Component
 
 @Component

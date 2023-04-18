@@ -1,15 +1,11 @@
 package br.com.bdurantecdev.forum.service
 
-import br.com.bdurantecdev.forum.dto.AtualizaTopicoDTO
-import br.com.bdurantecdev.forum.dto.NovoTopicoForm
-import br.com.bdurantecdev.forum.dto.TopicoView
-import br.com.dutech.forum.exception.NotFoundException
-import br.com.dutech.forum.mapper.TopicoFormMapper
-import br.com.dutech.forum.mapper.TopicoViewMapper
-import br.com.dutech.forum.model.Topico
+import br.com.bdurantecdev.forum.exception.NotFoundException
+import br.com.bdurantecdev.forum.mapper.TopicoFormMapper
+import br.com.bdurantecdev.forum.mapper.TopicoViewMapper
+import br.com.bdurantecdev.forum.model.Topico
 import org.springframework.stereotype.Service
 import java.util.stream.Collectors
-import kotlin.collections.ArrayList
 
 @Service
 class TopicoService(
@@ -28,7 +24,7 @@ class TopicoService(
     fun buscarPorId(id: Long): br.com.bdurantecdev.forum.dto.TopicoView {
         val topico = topicos.stream().filter { t ->
             t.id == id
-        }.findFirst().orElseThrow{ NotFoundException(notFoundMessage) }
+        }.findFirst().orElseThrow { NotFoundException(notFoundMessage) }
 
         return topicoViewMapper.map(topico)
     }
@@ -43,7 +39,7 @@ class TopicoService(
     fun atualizar(dto: br.com.bdurantecdev.forum.dto.AtualizaTopicoDTO): br.com.bdurantecdev.forum.dto.TopicoView {
         val topico = topicos.stream().filter { t ->
             t.id == dto.id
-        }.findFirst().orElseThrow{ NotFoundException(notFoundMessage) }
+        }.findFirst().orElseThrow { NotFoundException(notFoundMessage) }
 
         val novoTopico = Topico(
             id = topico.id,
@@ -61,9 +57,9 @@ class TopicoService(
     }
 
     fun deletar(id: Long) {
-        val topico = topicos.stream().filter{
-            t -> t.id == id
-        }.findFirst().orElseThrow{ NotFoundException(notFoundMessage) }
+        val topico = topicos.stream().filter { t ->
+            t.id == id
+        }.findFirst().orElseThrow { NotFoundException(notFoundMessage) }
 
         topicos = topicos.minus(topico)
     }
