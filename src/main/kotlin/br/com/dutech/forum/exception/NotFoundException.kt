@@ -1,6 +1,0 @@
-package br.com.dutech.forum.exception
-
-import java.lang.RuntimeException
-
-class NotFoundException(message: String?) : RuntimeException(message) {
-}
