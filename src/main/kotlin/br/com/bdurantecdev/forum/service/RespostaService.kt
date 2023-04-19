@@ -12,11 +12,11 @@ class RespostaService(
     private val topicoService: TopicoService
 ) {
 
-    fun cadastrar(form: br.com.bdurantecdev.forum.dto.NovaRespostaForm, idTopico: Long) {
+    fun cadastrar(form: NovaRespostaForm, idTopico: Long) {
         //Faz a transformação do form em model
         val resposta = respostaFormMapper.map(form)
         resposta.id = respostas.size.toLong() + 1
-        resposta.topico = topicoService.buscarPorId(idTopico)
+//        resposta.topico = topicoService.buscarPorId(idTopico)
 
         //Adiciona a resposta na lista de respostas
         respostas = respostas.plus(resposta)

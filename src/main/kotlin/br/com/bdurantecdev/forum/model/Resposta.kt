@@ -1,6 +1,5 @@
 package br.com.bdurantecdev.forum.model
 
-import br.com.bdurantecdev.forum.dto.TopicoView
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -13,6 +12,6 @@ data class Resposta(
     @ManyToOne
     val autor: Usuario,
     @ManyToOne
-    var topico: TopicoView? = null,
+    var topico: Topico? = null,
     val solucao: Boolean
 )
